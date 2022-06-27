@@ -14,6 +14,8 @@ ark:
   volumes:
     - /my/path/to/ark:/ark
   ports:
+   - 7777:7777/udp
+   - 7777:7777
    - 7778:7778/udp
    - 7778:7778
    - 27015:27015/udp

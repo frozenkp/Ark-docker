@@ -18,14 +18,14 @@ __Don't forget to use `docker pull turzam/ark` to get the latest version of the 
 
 ## Usage
 Fast & Easy server setup :   
-`docker run -d -p 7778:7778 -p 7778:7778/udp -p 27015:27015 -p 27015:27015/udp -e SESSIONNAME=myserver -e ADMINPASSWORD="mypasswordadmin" --name ark turzam/ark`
+`docker run -d -p 7777:7777 -p 7777:7777/udp -p 7778:7778 -p 7778:7778/udp -p 27015:27015 -p 27015:27015/udp -e SESSIONNAME=myserver -e ADMINPASSWORD="mypasswordadmin" --name ark turzam/ark`
 
 You can map the ark volume to access config files :  
-`docker run -d -p 7778:7778 -p 7778:7778/udp -p 27015:27015 -p 27015:27015/udp -e SESSIONNAME=myserver -v /my/path/to/ark:/ark --name ark turzam/ark`  
+`docker run -d -p 7777:7777 -p 7777:7777/udp -p 7778:7778 -p 7778:7778/udp -p 27015:27015 -p 27015:27015/udp -e SESSIONNAME=myserver -v /my/path/to/ark:/ark --name ark turzam/ark`  
 Then you can edit */my/path/to/ark/arkmanager.cfg* (the values override GameUserSetting.ini) and */my/path/to/ark/[GameUserSetting.ini/Game.ini]*
 
 You can manager your server with rcon if you map the rcon port (you can rebind the rcon port with docker):  
-`docker run -d -p 7778:7778 -p 7778:7778/udp -p 27015:27015 -p 27015:27015/udp -p 32330:32330  -e SESSIONNAME=myserver --name ark turzam/ark`  
+`docker run -d -p 7777:7777 -p 7777:7777/udp -p 7778:7778 -p 7778:7778/udp -p 27015:27015 -p 27015:27015/udp -p 32330:32330  -e SESSIONNAME=myserver --name ark turzam/ark`  
 
 You can change server and steam port to allow multiple servers on same host:  
 *(You can't just rebind the port with docker. It won't work, you need to change STEAMPORT & SERVERPORT variable)*
@@ -70,7 +70,7 @@ To add mods, you only need to change the variable ark_GameModIds in *arkmanager.
 
 ## Recommended Usage
 - First run  
- `docker run -it -p 7778:7778 -p 7778:7778/udp -p 27015:27015 -p 27015:27015/udp -p 32330:32330 -e SESSIONNAME=myserver -e ADMINPASSWORD="mypasswordadmin" -e AUTOUPDATE=120 -e AUTOBACKUP=60 -e WARNMINUTE=30 -v /my/path/to/ark:/ark --name ark turzam/ark`  
+ `docker run -it -p 7777:7777 -p 7777:7777/udp -p 7778:7778 -p 7778:7778/udp -p 27015:27015 -p 27015:27015/udp -p 32330:32330 -e SESSIONNAME=myserver -e ADMINPASSWORD="mypasswordadmin" -e AUTOUPDATE=120 -e AUTOBACKUP=60 -e WARNMINUTE=30 -v /my/path/to/ark:/ark --name ark turzam/ark`  
 - Wait for ark to be downloaded installed and launched, then Ctrl+C to stop the server.
 - Edit */my/path/to/ark/GameUserSetting.ini and Game.ini*
 - Edit */my/path/to/ark/arkserver.cfg* to add mods and configure warning time.
